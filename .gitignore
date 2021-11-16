@@ -1,0 +1,6 @@
+*.o
+a.out.dSYM/
+a.out
+libasm.a
+*.dSYM/*
+test.txt
