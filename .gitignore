@@ -1,6 +1,7 @@
 *.o
-a.out.dSYM/
+# a.out.dSYM/
 a.out
 libasm.a
 *.dSYM/*
 test.txt
+.DS_Store
