@@ -24,7 +24,7 @@ In this code, the registers r8b and r9b are used to temporaly hold a value. Thou
 
 Jumps are usually used in combination with cmp, which compares two regisers/values
 
-### Push pop:
+### Push/pop:
  - push: pushes the mentioned register on the stack
  - pop: pops the newest register back from the stack, and puts it in the mentioned register
 
