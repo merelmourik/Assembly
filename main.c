@@ -6,7 +6,7 @@
 /*   By: merelmourik <merelmourik@student.42.fr>      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/17 10:36:03 by merelmourik   #+#    #+#                 */
-/*   Updated: 2021/11/16 11:06:30 by merelmourik   ########   odam.nl         */
+/*   Updated: 2021/11/16 14:52:26 by merelmourik   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 #include <sys/uio.h>
 #include <unistd.h>
 
+#define BOLDBLUE    "\033[1m\033[34m"
+#define RESET   "\033[0m"
+
 extern char *ft_strdup(const char *s1);
 extern size_t ft_strlen(const char *str);
 extern int	ft_strcmp(const char *s1, const char *s2);
@@ -29,14 +32,15 @@ extern ssize_t ft_read(int fd, void *buf, size_t count);
 
 int main(void)
 {
-	printf("Testing ft_strlen\n");
+  
+	printf(BOLDBLUE "Testing strlen\n" RESET);
 	char *str_slen = "Length should be 19";
 	printf("Original: %lu \n", strlen(str_slen));
 	printf("Mine: %lu \n", ft_strlen(str_slen));
 	printf("Original: %lu \n", strlen(""));
 	printf("Mine: %lu \n", ft_strlen(""));
 	
-	printf("\nTesting strcpy:\n");
+	printf(BOLDBLUE"\nTesting strcpy:\n" RESET);
 	char *src = "I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source! I'm the source!";
 	char dst[500];
 	printf("Mine: %s\nOriginal: %s\n", ft_strcpy(dst, src), strcpy(dst, src));
@@ -49,7 +53,7 @@ int main(void)
 	printf("Original: [%s]\n", strcpy(dst2, src2));
     printf("Mine: [%s]\n", ft_strcpy(dst2, src2));
 
-	printf("\nTesting strcmp:\n");
+	printf(BOLDBLUE"\nTesting strcmp:\n" RESET);
 	char *src3 = "\xfe";
 	char *dst3 = "\xff";
 	int diff_s = strcmp(src3, dst3);
@@ -87,14 +91,15 @@ int main(void)
 	diff = ft_strcmp(dst3, src3);
 	printf("Mine: %i\nOriginal: %i\n", diff, diff_s);
 
-	printf("\nTesting write:\n");
+	printf(BOLDBLUE"\nTesting write:\n" RESET);
 	int fd;
 	fd = open("test.txt", O_CREAT | O_RDWR);
-	printf("ft_write should be 6: %zi\n", ft_write(fd, "Test.\n", 6));
-	printf("ft_write should be -1: %zi\n", ft_write(66, "Test.\n", 6));
+	printf("Mine: %zi\nOriginal: %zi\n", ft_write(fd, "Test.\n", 6), write(fd, "Test.\n", 6));
+	printf("Mine: %zi\nOriginal: %zi\n", ft_write(66, "Test.\n", 6), write(66, "Test.\n", 6));
 	
-	printf("\nTesting read:\n");
-	char buf[10];
+	printf(BOLDBLUE"\nTesting read:\n" RESET);
+	char buf[100];
+	printf("Please enter a string, press 'enter' and write the same string again (max 100 characters)\n");
 	printf("Mine: %zi\n", ft_read(0, buf, 10));
 	printf("Original: %zi\n", read(0, buf, 10));
 	printf("Mine: %s\n", strerror(errno));
@@ -103,16 +108,18 @@ int main(void)
 	printf("Mine: (error): %zi\n", ft_read(10, buf, 10));
 	printf("Original (error): %zi\n", read(10, buf, 10));
 	printf("Mine: %s\n", strerror(errno));
-	printf("Original: %s\n", strerror(errno));
+	printf("Original: %s\n\n", strerror(errno));
 	errno = 0;
 
-	printf("Testing strdup:\n");
+	printf(BOLDBLUE"Testing strdup:\n" RESET);
 	char *str;
-	str = ft_strdup("Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n Test.\n");
+	str = ft_strdup("Test.\n Test.\n Test.");
 	printf("Mine: %s\n", str);
+	str = strdup("Test.\n Test.\n Test.");
+	printf("Original: %s\n", str);
 	str = ft_strdup("");
 	char *str1 = strdup("");
-	printf("Mine: [%s], 	original: [%s]\n", str1, str);
+	printf("Mine: [%s]\nOriginal: [%s]\n", str, str1);
 	printf("Mine: %s memmory: %p \n", str, &(str[0]));
 	printf("Original: %s memmory: %p \n", str1, &(str1[0]));
 	return (0);
