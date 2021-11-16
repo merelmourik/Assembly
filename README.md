@@ -1,4 +1,9 @@
-# Assembly code explanation:
+# Assembly library
+In this code a wrote a few simple functions in assembly and made a small library from them.
+To test the functions, just enter 'make run' and the code will show you what it can do.
+If you want more information about assembly, please continue reading.
+
+## Assembly code explanation:
 ### general:
 global is where the code starts
 extern announce the extern functions that are used
