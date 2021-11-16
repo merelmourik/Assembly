@@ -6,29 +6,11 @@
 /*   By: merelmourik <merelmourik@student.42.fr>      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/17 10:36:03 by merelmourik   #+#    #+#                 */
-/*   Updated: 2021/11/16 15:07:31 by merelmourik   ########   odam.nl         */
+/*   Updated: 2021/11/16 15:14:23 by merelmourik   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-
-#define BOLDBLUE    "\033[1m\033[34m"
-#define RESET   "\033[0m"
-
-extern char *ft_strdup(const char *s1);
-extern size_t ft_strlen(const char *str);
-extern int	ft_strcmp(const char *s1, const char *s2);
-extern char *ft_strcpy(char *dst, const char *src);
-extern ssize_t ft_write(int fd, const void *buf, size_t count);
-extern ssize_t ft_read(int fd, void *buf, size_t count);
+#include "header.h"
 
 int main(void)
 {
@@ -96,7 +78,7 @@ int main(void)
 	printf("Mine: %zi\nOriginal: %zi\n", ft_write(fd, "Test.\n", 6), write(fd, "Test.\n", 6));
 	printf("Mine: %zi\nOriginal: %zi\n", ft_write(66, "Test.\n", 6), write(66, "Test.\n", 6));
 
-	printf(BOLDBLUE"\nTesting read:\n" RESET);
+	printf(BOLDBLUE"\nTesting read:" RESET);
 	char buf[100];
 	printf("Please enter a string, press 'enter' and write the same string again (max 100 characters)\n");
 	printf("Mine: %zi\n", ft_read(0, buf, 10));
