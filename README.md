@@ -5,14 +5,14 @@ If you want more information about assembly, please continue reading.
 
 ## Assembly code explanation:
 ### General:
- - global is where the code starts
- - extern announce the extern functions that are used
+ - global: where the code starts
+ - extern: announce the extern functions that are used
 
 ### Registers:
- - rdi is the register for the first argument of a function
- - rsi is the register for the second argument of a function
- - rdx is the register for the third argument of a function
- - rax is the register that stores te return value
+ - rdi: the register for the first argument of a function
+ - rsi: the register for the second argument of a function
+ - rdx: the register for the third argument of a function
+ - rax: the register that stores te return value
 
 In this code, the registers r8b and r9b are used to temporaly hold a value. Though other registers can be used to temporaly hold a value.
 
@@ -29,7 +29,7 @@ Jumps are usually used in combination with cmp, which compares two regisers/valu
  - pop: pops the newest register back from the stack, and puts it in the mentioned register
 
 ### Others:
- - ret returns the code
- - inc increments the value in the register by one
- - mov copies one register in the other register
- - sub substracts the values of two registers
+ - ret: returns the code
+ - inc: increments the value in the register by one
+ - mov: copies one register in the other register
+ - sub: substracts the values of two registers
